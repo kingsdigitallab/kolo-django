@@ -18,4 +18,8 @@ python web.py
 visit the URL shown by the script
 
 ### 
+Visit the kolo-person sheet on Google
+Export it as CSV
+Rename is as people.csv
+Move it into your confidential folder  
 Browse the import.html webpage
