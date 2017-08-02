@@ -29,5 +29,5 @@ Repository for King's Collaborator Locator (KoLo)
 Libraries you could you for your app:
 
 * <a href="https://vuejs.org/v2/guide/">Vue.js</a>: a client-side html templating system. Generates UI from json data.
-* <a href="bulma.io">Bulma</a>: a minimal CSS framework that works well with Vue.js
+* <a href="http://bulma.io/">Bulma</a>: a minimal CSS framework that works well with Vue.js
 * <a href="https://pouchdb.com/getting-started.html">PouchDB</a>: a javascript library to manipulate CouchDB data
