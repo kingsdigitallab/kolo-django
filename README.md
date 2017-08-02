@@ -50,7 +50,12 @@ support material for explaining the way you could build your front-end app.
 * click chouchdb in the left panel
 * check if the chouchdb container is started (green circle)
 * if the circle is grey, click 'star' button in the horizontal toolbar near the top
-* take note of the 'Access URL' in the right panel (localhost:XXXX)
+* for first time:
+** take note of the 'Access URL' in the right panel (localhost:XXXX)
+** go to http://localhost:32768/_utils/config.html
+** set credentials = true
+** add cores, origins, *
+** set enable_cors = true 
 
 ### Local web server
 

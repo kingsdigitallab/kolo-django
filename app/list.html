@@ -11,51 +11,26 @@
     <script src="../libs/pouchdb-auth.min.js"></script>
     <script>
         $(function() {
-            
+            // connect to the database
             var settings = window.kolo_settings;
-            var user = settings.user;
+            var db = new PouchDB(settings.couchdb);
             
-            if (1) {
-                var db = new PouchDB(settings.couchdb);
-            }
-
-            if (0) {
-
-                var pouchOpts = {
-                  skip_setup: true
-                };
-    
-                var ajaxOpts = {
-                  ajax: {
-                    cache: false,
-                    headers: {
-                      Authorization: 'Basic ' + window.btoa(user.name + ':' + user.password)
-                    }
-                  },
-                };
-            }
-
-            if (0) {
-                var db = new PouchDB(settings.couchdb, pouchOpts);
-
-                db.login(user.name, user.password, ajaxOpts).then(function() {
-                    return db.allDocs();
-                }).then(function(docs) {
-                        console.log(docs);
-                }).catch(function(error) {
-                        console.error(error);
-                });
-                  
-            }
-
-            if (1) {
-                db.get('f8a1e9eddb63cb08516b653775000d9a').then(function(doc) {
-                    console.log(doc);
-                }).catch(function (err) {
-                    console.log(err);
-                });
-            }
-
+            // get person document with id=f8a1e9eddb63cb08516b653775000d9a
+            console.log('h1');
+            db.allDocs().then(function(docs) {
+                console.log(docs);
+            }).catch(function (err) {
+                console.log(err);
+            });
+            console.log('h2');
+            
+            db.get('f8a1e9eddb63cb08516b653775000d9a').then(function(doc) {
+                console.log(doc);
+            }).catch(function (err) {
+                console.log(err);
+            });
+            
+            db.allDocs();
         });
     </script>
 </body>

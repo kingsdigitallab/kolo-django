@@ -18,6 +18,8 @@
     <script src="../libs/papaparse.min.js"></script>
     <script>
         $(function() {
+            var settings = window.kolo_settings;
+            var db = new PouchDB(settings.couchdb);
             
             var settings = window.kolo_settings;
             
@@ -33,6 +35,9 @@
                 Papa.parse(csv_path, {
                     download: true,
                     complete: function(results) {
+                        // remove all documents
+                        // recreate views
+                        // add records
                         console.log("Finished:", results.data);
                         log('imported '+results.data.length+' records');
                     }
