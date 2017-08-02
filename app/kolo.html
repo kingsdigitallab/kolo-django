@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+<body>
+    BODY
+    
+    <script src="../../confidential/settings.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.min.js"></script>
+    <script src="../libs/pouchdb-auth.min.js"></script>
+    <script>
+        $(function() {
+            
+            var settings = window.settings;
+            
+            var user = settings.user;
+
+            var pouchOpts = {
+              skip_setup: true
+            };
+
+            var ajaxOpts = {
+              ajax: {
+                cache: false,
+                headers: {
+                  Authorization: 'Basic ' + window.btoa(user.name + ':' + user.password)
+                }
+              },
+            };
+
+            if (0) {
+                var db = new PouchDB(settings.couchdb, pouchOpts);
+
+                db.login(user.name, user.password, ajaxOpts).then(function() {
+                    return db.allDocs();
+                }).then(function(docs) {
+                        console.log(docs);
+                }).catch(function(error) {
+                        console.error(error);
+                });
+                  
+                if (0) {
+                  db.get('f8a1e9eddb63cb08516b653775000d19').then(function(doc) {
+                      console.log(doc);
+                  }).catch(function (err) {
+                      console.log(err);
+                  });
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
