@@ -3,8 +3,8 @@ Repository for King's Collaborator Locator (KoLo)
 
 ## DISCLAIMER
 
-<b>Disclaimer</b>: this is an incomplete project demo for the front-end for the 
-exclusive purpose of a workshop. It is not a recommended solution, just a 
+<b>Disclaimer</b>: this is an incomplete project demo put together only for 
+running a workshop. It is not a recommended solution, just a 
 support material for explaining the way you could build your front-end app.
 
 ## Project set up
