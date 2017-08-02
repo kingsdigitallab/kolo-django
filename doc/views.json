@@ -1,0 +1,9 @@
+{
+   "_id": "_design/people",
+   "_rev": "4-0614b07258b1fc3265da413fc3dd2890",
+   "views": {
+       "all": {
+           "map": "function(doc) { if (!doc.position.is_group) { emit(doc._id, doc) } }"
+       }
+   }
+}
