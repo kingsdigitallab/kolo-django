@@ -3,10 +3,10 @@ Repository for King's Collaborator Locator (KoLo)
 
 ## Project set up
 
-create a folder 'kolo'
-install the git project into 'kolo'
-copy the 'confidential' folder into 'kolo'
-edit confidential/settings.js
+* create a folder 'kolo'
+* install the git project into 'kolo'
+* copy the 'confidential' folder into 'kolo'
+* edit confidential/settings.js
 
 ## Data Import
 
@@ -17,7 +17,7 @@ edit confidential/settings.js
 * python web.py
 * visit the URL shown by the script
 
-### 
+### Prepare and upload the data
 * Visit the kolo-person sheet on Google
 * Export it as CSV
 * Rename is as people.csv
@@ -26,3 +26,8 @@ edit confidential/settings.js
 
 # Libraries
 
+Libraries you could you for your app:
+
+* <a href="https://vuejs.org/v2/guide/">Vue.js</a>: a client-side html templating system. Generates UI from json data.
+* <a href="bulma.io">Bulma</a>: a minimal CSS framework that works well with Vue.js
+* <a href="https://pouchdb.com/getting-started.html">PouchDB</a>: a javascript library to manipulate CouchDB data
