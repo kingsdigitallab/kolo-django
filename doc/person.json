@@ -1,0 +1,95 @@
+[
+{
+    "_id": "f8a1e9eddb63cb08516b653775000d9a",
+    "_rev": "3-cfacf552260057a7066016ffbc2afdea",
+    "profile": {
+        "first_name": "Ben",
+        "last_name": "Smith",
+        "pure_link": "https://kclpure.kcl.ac.uk/portal/en/persons/ben-smith(1239b0fd-d1a4-4fa1-a945-433aad4b63f9).html",
+        "homepage_link": "http://www.kcl.ac.uk/artshums/depts/ddh/people/academic/bsmith/Index.aspx",
+        "intro": "",
+        "interests": "Ben’s research interests include digital libraries and archives, their role in research and scholarly publishing, and their relationships with broader research environments and research infrastructures. He is interested in understanding research practices in the humanities, including researcher (and other user) behaviour in archives, and investigating how such practices can be supported or enhanced by digital methods, including the use of 'citizen science' or 'community-sourcing' methods. A particular interest is the application of computational methods for organising, integrating and analysing unstructured and semi-structured information, and the issues of interpretation this raises."
+    },
+    "position": {
+        "department": "KDL",
+        "role": "Research Developer",
+        "contact_preference": "email",
+        "period": [
+            "01-01-2010",
+            "02-01-2020"
+        ],
+        "salary": "",
+        "is_group": false,
+        "is_prospective": false,
+        "posted_by": ""
+    },
+    "projects": [
+        {
+            "name": "",
+            "funding_body": "",
+            "period": [
+                "01-01-2010",
+                "02-01-2020"
+            ]
+        }
+    ],
+    "assets": [
+        {
+            "name": "Digital Humanities",
+            "types": [
+                "Humanities",
+                "Computing"
+            ],
+            "nature": "interest|skill|expertise|equipment",
+            "description": ""
+        }
+    ]
+}
+,
+{
+    "_id": "f8a1e9eddb63cb08516b653775000d9b",
+    "_rev": "3-cfacf552260057a7066016ffbc2afdea",
+    "profile": {
+        "first_name": "Bill",
+        "last_name": "Brown",
+        "pure_link": "https://kclpure.kcl.ac.uk/portal/en/persons/ben-smith(1239b0fd-d1a4-4fa1-a945-433aad4b63f9).html",
+        "homepage_link": "http://www.kcl.ac.uk/artshums/depts/ddh/people/academic/bsmith/Index.aspx",
+        "intro": "",
+        "interests": "Bill’s research interests include digital libraries and archives, their role in research and scholarly publishing, and their relationships with broader research environments and research infrastructures. He is interested in understanding research practices in the humanities, including researcher (and other user) behaviour in archives, and investigating how such practices can be supported or enhanced by digital methods, including the use of 'citizen science' or 'community-sourcing' methods. A particular interest is the application of computational methods for organising, integrating and analysing unstructured and semi-structured information, and the issues of interpretation this raises."
+    },
+    "position": {
+        "department": "DDH",
+        "role": "Senior Lecturer",
+        "contact_preference": "email",
+        "period": [
+            "01-01-2010",
+            "02-01-2020"
+        ],
+        "salary": "",
+        "is_group": false,
+        "is_prospective": false,
+        "posted_by": ""
+    },
+    "projects": [
+        {
+            "name": "",
+            "funding_body": "",
+            "period": [
+                "01-01-2010",
+                "02-01-2020"
+            ]
+        }
+    ],
+    "assets": [
+        {
+            "name": "Digital Humanities",
+            "types": [
+                "Humanities",
+                "Computing"
+            ],
+            "nature": "interest|skill|expertise|equipment",
+            "description": ""
+        }
+    ]
+}
+]
