@@ -2,11 +2,7 @@
 // COPY THE confidential FOLDER INTO THE PARENT FOLDER
 // THEN REMOVE THIS MESSAGE
 window.kolo_settings = {
-    'couchdb': 'INSERT_URL_TO_COUCHDB',
-    'user': {
-        'name': 'YOURNAME',
-        'password': '',
-    },
+    'couchdb': 'http://localhost:32768/kolo',
     'csv': {
         'people': '../../confidential/people.csv',
     }

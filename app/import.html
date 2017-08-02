@@ -2,14 +2,17 @@
 <head>
 </head>
 <body>
+    <a href=".">Main Page</a>
     <h1>Data Import</h1>
     
-    <button>Please wait...</button>
+    <button id="btn-import">Import Data</button>
     
-    <pre id="message-box">Please wait...</pre>
+    <pre id="message-box"></pre>
     
     <script src="../../confidential/settings.js"></script>
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" 
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.min.js"></script>
     <script src="../libs/pouchdb-auth.min.js"></script>
     <script src="../libs/papaparse.min.js"></script>
@@ -25,15 +28,15 @@
             function log(message) {
                 $('#message-box').append('\n'+message);
             }
-            log('Importing...');
-            
             // Parse local CSV file
-            Papa.parse(csv_path, {
-                download: true,
-                complete: function(results) {
-                    console.log("Finished:", results.data);
-                    log('imported '+results.data.length+' records');
-                }
+            $('#btn-import').on('click', function(){
+                Papa.parse(csv_path, {
+                    download: true,
+                    complete: function(results) {
+                        console.log("Finished:", results.data);
+                        log('imported '+results.data.length+' records');
+                    }
+                });
             });
 
         });
