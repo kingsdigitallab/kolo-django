@@ -12,14 +12,17 @@ edit confidential/settings.js
 
 ### Run a local webserver
 
-open the terminal
-cd into bin
-python web.py
-visit the URL shown by the script
+* open the terminal
+* cd into bin
+* python web.py
+* visit the URL shown by the script
 
 ### 
-Visit the kolo-person sheet on Google
-Export it as CSV
-Rename is as people.csv
-Move it into your confidential folder  
-Browse the import.html webpage
+* Visit the kolo-person sheet on Google
+* Export it as CSV
+* Rename is as people.csv
+* Move it into your confidential folder  
+* Browse the import.html webpage
+
+# Libraries
+
