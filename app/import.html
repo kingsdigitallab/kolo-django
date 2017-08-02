@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+    
+    <pre id="message-box">Please wait...</pre>
+    
+    <script src="../../confidential/settings.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.min.js"></script>
+    <script src="../libs/pouchdb-auth.min.js"></script>
+    <script src="../libs/papaparse.min.js"></script>
+    <script>
+        $(function() {
+            
+            var settings = window.kolo_settings;
+            
+            var csv_path = settings.csv.people;
+            
+            console.log(csv_path);
+            
+            function log(message) {
+                $('#message-box').append('\n'+message);
+            }
+            log('Importing...');
+            
+            // Parse local CSV file
+            Papa.parse(csv_path, {
+                download: true,
+                complete: function(results) {
+                    console.log("Finished:", results.data);
+                    log('imported '+results.data.length+' records');
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
