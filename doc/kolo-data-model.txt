@@ -1,0 +1,14 @@
+﻿Intro to Kolo Data Model
+
+There are two main entities in the Kolo project: 
+a) person: a member of the academic staff with a description of their professional position, profile, projects and assets
+b) a call for collaboration: the description of a person you'd like to collaborate with on some projects
+
+On closer inspection the two entities are essentially 'positions': a person is an current running position and a collaboration is a potential or prospective one. Conceptually the two entities have therefore a lot in common. We decided to exploit those similarities in the data model by having a single schema for the database document that describes a person or a collaboration.
+
+We chose CouchDB to store the data. It is a 'NoSQL' (i.e. non-relational) system where each records is represented as a JSON document. This allows more flexibility in the schema (the schema is actually free and extensible rather than enforced) and is more amenable to Javascript consumption.
+
+See person.json for an example of two person documents. 
+
+See kolo-data-definition.xlsx for more detailed description of the fields and how to use them for either a person or a collaboration.
+
