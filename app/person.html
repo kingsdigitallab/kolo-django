@@ -1,0 +1,124 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+    <link rel="stylesheet" href="../libs/site.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <a href="people.html">People</a>
+            
+            <div id="template" class="hidden container">
+                <template v-if="doc._id">
+                    <h1 class="title">
+                        {{ doc.profile.first_name }} {{ doc.profile.last_name }}
+                    </h1>
+    
+                    <div class="field">
+                        <label for="profile_first_name" class="label">First name</label>
+                        <div class="control">
+                            <input type="text" class="control" 
+                                v-model="doc.profile.first_name" 
+                                id="profile_first_name" />
+                        </div>
+                    </div>
+    
+                    <div class="field">
+                        <label for="profile_last_name" class="label">Last name</label>
+                        <div class="control">
+                            <input type="text" class="control" 
+                                v-model="doc.profile.last_name" 
+                                id="profile_last_name" />
+                        </div>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="position_role" class="label">Role</label>
+                        <div class="control">
+                            <input type="text" class="control" 
+                                v-model="doc.position.role" 
+                                id="position_role" />
+                        </div>
+                    </div>
+    
+                    <div class="field">
+                        <label for="position_department" class="label">First name</label>
+                        <div class="control">
+                            <input type="text" class="control" 
+                                v-model="doc.position.department" 
+                                id="position_department" />
+                        </div>
+                    </div>
+                    
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-primary" v-on:click="save()">
+                                Save
+                            </button>
+                        </div>
+                        <div class="control">
+                            <a class="button is-link" href="people.html">
+                                Cancel
+                            </a>
+                        </div>
+                    </div>
+                </template>
+                <div v-else>
+                    Person not found
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../confidential/settings.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="../libs/utils.js"></script>
+    <script>
+        $(function() {
+            // connect to the database
+            var settings = window.kolo_settings;
+            var db = new PouchDB(settings.couchdb);
+            var docid = getUrlVar('docid', '0');
+            
+            var app = new Vue({
+                el: '#template',
+                data: {
+                    doc: {
+                        profile: {},
+                        position: {},
+                        projects: [],
+                        assets: [],
+                    }
+                },
+                mounted: function() {
+                    var self = this;
+                    db.get(docid).then(function(doc) {
+                        self.doc = doc;
+                        console.log(doc);
+                        $('#template').show();
+                    }).catch(function (err) {
+                        console.log(err);
+                        $('#template').show();
+                    });
+                },
+                methods: {
+                    'save': function() {
+                        var self = this;
+                        db.put(this.doc).then(function(doc) {
+                            sendMessage('Person document saved to database', 1, 'people.html');
+                        }).catch(function (err) {
+                            sendMessage('Could not save person document to database', -1);
+                            console.log(err);
+                        });
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+    <link rel="stylesheet" href="../libs/site.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <a href=".">Main Page</a>
+    
+            <div id="template" class="hidden">
+                <h1 class="title">People ({{ results.total_rows }})</h1>
+                
+                <ul v-for="row in results.rows">
+                    <li>
+                        <a v-bind:href="'person.html?docid=' + row.doc._id">
+                            {{ row.doc.profile.first_name }}
+                            {{ row.doc.profile.last_name }},
+                        </a> 
+                        {{ row.doc.position.role }} at 
+                        {{ row.doc.position.department }}
+                    </li>
+                </ul>
+            </div>
+        
+            <script src="../../confidential/settings.js"></script>
+            <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.min.js"></script>
+            <script src="https://unpkg.com/vue"></script>
+            <script src="../libs/utils.js"></script>
+            <script>
+                $(function() {
+                    // connect to the database
+                    var settings = window.kolo_settings;
+                    var db = new PouchDB(settings.couchdb);
+                    
+                    var app = new Vue({
+                        el: '#template',
+                        data: {
+                            results: {
+                                rows: [],
+                                total_rows: 0,
+                            }
+                        },
+                        mounted: function() {
+                            var self = this;
+                            var options = {
+                                include_docs: true,
+                            }
+                            db.allDocs(options).then(function(results) {
+                                self.results = results;
+                                console.log(self.results);
+                                $('#template').show();
+                            }).catch(function (err) {
+                                console.log(err);
+                            });
+                        },
+                    })
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

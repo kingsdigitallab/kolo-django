@@ -1,0 +1,9 @@
+#template {
+    display: none;
+}
+#user-message {
+    display: none;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
