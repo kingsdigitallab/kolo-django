@@ -1,0 +1,62 @@
+<html>
+<head>
+    <style>
+        #people {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a href=".">Main Page</a>
+    
+    <div id="people" class="hidden">
+        <h1>People ({{ results.total_rows }})</h1>
+        
+        <ul v-for="row in results.rows">
+            <li>
+                <a v-bind:href="'person.html?id=' + row.id">
+                    {{ row.doc.profile.first_name }}
+                    {{ row.doc.profile.last_name }},
+                </a> 
+                {{ row.doc.position.role }} at 
+                {{ row.doc.position.department }}
+            </li>
+        </ul>
+    </div>
+
+    <script src="../../confidential/settings.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        $(function() {
+            // connect to the database
+            var settings = window.kolo_settings;
+            var db = new PouchDB(settings.couchdb);
+            
+            var app = new Vue({
+                el: '#people',
+                data: {
+                    results: {
+                        rows: [],
+                        total_rows: 0,
+                    }
+                },
+                mounted: function() {
+                    var self = this;
+                    var options = {
+                        include_docs: true,
+                    }
+                    db.allDocs(options).then(function(results) {
+                        self.results = results;
+                        console.log(self.results);
+                        $('#people').show();
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+                },
+            })
+        });
+    </script>
+</body>
+</html>
