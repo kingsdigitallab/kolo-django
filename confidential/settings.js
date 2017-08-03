@@ -2,7 +2,8 @@
 // COPY THE confidential FOLDER INTO THE PARENT FOLDER
 // THEN REMOVE THIS MESSAGE
 window.kolo_settings = {
-    'couchdb': 'http://localhost:32768/kolo',
+    //'couchdb': 'http://localhost:32768/kolo',
+    'couchdb': 'kolo',
     'csv': {
         'people': '../../confidential/people.csv',
     }

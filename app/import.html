@@ -21,23 +21,67 @@
             var settings = window.kolo_settings;
             var db = new PouchDB(settings.couchdb);
             
-            var settings = window.kolo_settings;
-            
             var csv_path = settings.csv.people;
             
             function log(message) {
                 $('#message-box').append('\n'+message);
+                console.log(message);
             }
             // Parse local CSV file
             $('#btn-import').on('click', function(){
+                log('read all documents from CSV');
                 Papa.parse(csv_path, {
+                    header: true,
                     download: true,
                     complete: function(results) {
                         // remove all documents
-                        // recreate views
-                        // add records
-                        console.log("Finished:", results.data);
-                        log('imported '+results.data.length+' records');
+                        var options = {
+                            include_docs: true,
+                        }
+                        var docs = [];
+                        log('read all documents from DB');
+                        db.allDocs(options).then(function(results) {
+                            $(results.rows).each(function(index, row) {
+                                row.doc._deleted = true;
+                                docs.push(row.doc);
+                            });
+                            log('delete all documents from DB');
+                            db.bulkDocs(docs);
+                        }).then(function () {
+                            // define all the CSV rows as new documents
+                            log('prepare new DB documents');
+                            var docid = 0;
+                            docs = [];
+                            $(results.data).each(function(index, row) {
+                                if (row['profile.last_name'] && (index > 1)) {
+                                    docid++;
+                                    // this creates a new document.
+                                    // to understand the mapping, 
+                                    // compare /doc/person.json with /confidential/people.csv
+                                    var doc = {
+                                        _id: 'person_'+docid,
+                                        profile: {
+                                            first_name: row['profile.first_name'],
+                                            last_name: row['profile.last_name'],
+                                        },
+                                        position: {
+                                            department: row['position.department'],
+                                            role: row['position.role'],
+                                            is_prospective: false,
+                                        }
+                                    };
+                                    docs.push(doc);
+                                }
+                            });
+
+                            // bulk-create all the docs in the database
+                            log('insert new documents into DB');
+                            db.bulkDocs(docs);
+                        }).then(function() {
+                            log('imported '+docs.length+' documents');
+                        }).catch(function (err) {
+                            console.log(err);
+                        });
                     }
                 });
             });

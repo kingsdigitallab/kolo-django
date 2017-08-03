@@ -16,7 +16,7 @@
                 
                 <ul v-for="row in results.rows">
                     <li>
-                        <a v-bind:href="'person.html?docid=' + row.id">
+                        <a v-bind:href="'person.html?docid=' + row.doc._id">
                             {{ row.doc.profile.first_name }}
                             {{ row.doc.profile.last_name }},
                         </a> 

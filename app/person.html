@@ -111,7 +111,6 @@
                         var self = this;
                         db.put(this.doc).then(function(doc) {
                             sendMessage('Person document saved to database', 1, 'people.html');
-                            console.log('SAVED!');
                         }).catch(function (err) {
                             sendMessage('Could not save person document to database', -1);
                             console.log(err);
