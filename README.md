@@ -9,7 +9,7 @@ support material for explaining the way you could build your front-end app.
 
 ## One-off initial set up
 
-### Install the Database Manager (CouchDB)
+### [OPTIONAL] Install the Database Manager (CouchDB)
 
 * download kitematic from the web
 * install it on your machine
@@ -28,23 +28,21 @@ support material for explaining the way you could build your front-end app.
 * cd into 'kolo'
 * git clone git@github.com:kingsdigitallab/kolo-django.git
 * copy the 'confidential' folder into 'kolo'
-* edit confidential/settings.js
-* ...
 
-## Data Import [TBC]
+## Data Import
 
 ### Prepare and upload the data
 
 * Visit the kolo-person sheet on Google
 * Export it as CSV
-* Rename is as people.csv
+* Rename it people.csv
 * Move it into your confidential folder
 * Browse the import.html webpage
 * Press the import button
 
 ## (Re)starting the environment
 
-### CouchDB
+### [OPTIONAL] CouchDB
 
 * start Kitematic
 * click chouchdb in the left panel
@@ -52,6 +50,7 @@ support material for explaining the way you could build your front-end app.
 * if the circle is grey, click 'star' button in the horizontal toolbar near the top
 * for first time:
 ** take note of the 'Access URL' in the right panel (localhost:XXXX)
+** set confidential/settings.js to 'http://localhost:XXXX/kolo' (see above for the value of XXX)
 ** go to http://localhost:32768/_utils/config.html
 ** set credentials = true
 ** add cores, origins, *
@@ -59,7 +58,6 @@ support material for explaining the way you could build your front-end app.
 
 ### Local web server
 
-* set confidential/settings.js to 'http://localhost:XXXX/kolo' (see above for the value of XXX)
 * open the terminal
 * cd into bin
 * python web.py
@@ -67,8 +65,10 @@ support material for explaining the way you could build your front-end app.
 
 # Libraries
 
-Libraries you could you for your app:
+Libraries used in this prototype:
 
 * <a href="https://vuejs.org/v2/guide/">Vue.js</a>: a client-side html templating system. Generates UI from json data.
-* <a href="http://bulma.io/documentation/overview/start/">Bulma</a>: a minimal CSS framework that works well with Vue.js
 * <a href="https://pouchdb.com/getting-started.html">PouchDB</a>: a javascript library to manipulate CouchDB data
+* <a href="https://www.w3schools.com/jquery/">jQuery</a>: a javascript library to simplify HTML manipulation
+* <a href="http://bulma.io/documentation/overview/start/">Bulma</a>: a minimal CSS framework that works well with Vue.js
+
